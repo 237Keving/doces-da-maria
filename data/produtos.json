@@ -1,0 +1,56 @@
+[
+  {
+    "id": "e4b1b3b2-6c8a-4d3b-8f7a-1c5c4e4d5a91",
+    "nome": "Brigadeiro Clássico",
+    "descricao": "Brigadeiro tradicional feito com chocolate belga e granulado crocante.",
+    "preco": 4.5,
+    "categoria": "brigadeiros",
+    "imagem": "https://cdn.awsli.com.br/2500x2500/179/179835/produto/356598951/brigadeiro-belga-splits-gourmet-charmm-ym97lqb8n8.png",
+    "destaque": true
+  },
+  {
+    "id": "f8a2c1d3-9b7e-4f5c-b1d2-3a4e5b6c7d8a",
+    "nome": "Bolo de Cenoura",
+    "descricao": "Bolo fofinho de cenoura com cobertura de chocolate derretido.",
+    "preco": 45.0,
+    "categoria": "bolos",
+    "imagem": "https://acdn-us.mitiendanube.com/stores/005/376/084/products/cenoura-com-brigadeiro1-1ed4184b8c56356a1817440402872554-1024-1024.webp",
+    "destaque": true
+  },
+  {
+    "id": "c7d3e4f5-1a2b-4c3d-9e8f-7a6b5c4d3e2f",
+    "nome": "Torta de Limão",
+    "descricao": "Torta cremosa de limão siciliano com merengue tostado na chama.",
+    "preco": 55.0,
+    "categoria": "tortas",
+    "imagem": "https://www.confeiteiradesucesso.com/wp-content/uploads/2020/10/tortalimao-receita5.jpg",
+    "destaque": false
+  },
+  {
+    "id": "b6c5d4e3-2f1a-4d5c-8e7f-6a5b4c3d2e1f",
+    "nome": "Beijinho de Coco",
+    "descricao": "Docinho de coco com cravo, feito com leite condensado e coco fresco.",
+    "preco": 4.0,
+    "categoria": "brigadeiros",
+    "imagem": "https://cdnm.westwing.com.br/glossary/uploads/br/2023/10/18152426/como-fazer-beijinho.jpg",
+    "destaque": false
+  },
+  {
+    "id": "a5b4c3d2-3e2f-4c5d-7f8e-5a4b3c2d1e0f",
+    "nome": "Sagu",
+    "descricao": "Sagu bem bagual com creme, feito com vinho.",
+    "preco": 5.0,
+    "categoria": "sagu",
+    "imagem": "https://receitasdepesos.com.br/wp-content/uploads/2024/06/sagu-1-1080x720.jpg",
+    "destaque": true
+  },
+  {
+    "id": "9f8e7d6c-5b4a-4d3c-2e1f-1a2b3c4d5e6f",
+    "nome": "Torta de Morango",
+    "descricao": "Torta com creme de baunilha e morangos frescos da estação.",
+    "preco": 60.0,
+    "categoria": "tortas",
+    "imagem": "https://guiadacozinha.com.br/wp-content/uploads/2019/10/torta-morango-chocolate-768x619.jpg",
+    "destaque": false
+  }
+]

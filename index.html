@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doces da Maria - Painel Profissional</title>
+  
+  <link rel="stylesheet" href="./assets/estilos.css" />
+  
+  <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__inner">
+      <a href="./" class="header__logo">
+        <i class="ph ph-candy"></i> Doces da <span>Maria</span>
+      </a>
+
+      <div class="header__busca">
+        <input
+          id="campo-busca"
+          class="header__busca-input"
+          type="search"
+          autocomplete="off"
+          placeholder="Buscar doces..."
+          aria-label="Buscar produtos"
+          data-input="busca-produtos"
+        />
+      </div>
+
+      <nav class="header__acoes" aria-label="Ações rápidas">
+        <button type="button" class="btn btn--carrinho" aria-label="Abrir carrinho" aria-expanded="false" aria-controls="carrinho-lateral" data-action="abrir-carrinho">
+          <i class="ph ph-shopping-cart"></i>
+          <span class="carrinho-contador" data-container="carrinho-contador" hidden>0</span>
+        </button>
+        <button type="button" class="header__acoes-tema" data-action="alternar-tema" aria-label="Alternar tema escuro">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button type="button" class="header__acoes-tema" aria-haspopup="dialog" aria-expanded="false" aria-controls="modal-login" data-action="btn-auth" aria-label="Autenticação">
+          <i class="ph ph-user" data-icone="auth"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="nav-abas" aria-label="Navegação principal">
+    <ul class="nav-abas__lista" role="tablist">
+      <li class="nav-abas__item" role="presentation">
+        <button type="button" id="tab-catalogo" class="nav-abas__btn nav-abas__btn--ativo" data-action="mudar-aba" data-alvo="secao-catalogo" role="tab" aria-selected="true" aria-controls="secao-catalogo">Catálogo</button>
+      </li>
+      <li class="nav-abas__item" role="presentation">
+        <button type="button" id="tab-contato" class="nav-abas__btn" data-action="mudar-aba" data-alvo="secao-contato" role="tab" aria-selected="false" aria-controls="secao-contato">Contato</button>
+      </li>
+      
+      <li class="nav-abas__item" role="presentation" data-restrito="true" hidden>
+        <button type="button" id="tab-dashboard" class="nav-abas__btn" data-action="mudar-aba" data-alvo="secao-dashboard" role="tab" aria-selected="false" aria-controls="secao-dashboard">Dashboard</button>
+      </li>
+      <li class="nav-abas__item" role="presentation" data-restrito="true" hidden>
+        <button type="button" id="tab-editor" class="nav-abas__btn" data-action="mudar-aba" data-alvo="secao-editor" role="tab" aria-selected="false" aria-controls="secao-editor">Editor</button>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="secao-catalogo" class="secao secao--visivel" role="tabpanel" aria-labelledby="tab-catalogo">
+      <div class="hero" aria-label="Apresentação">
+        <h1 class="hero__titulo">Feito com amor, <em>pra adoçar seu dia</em> <i class="ph ph-cake"></i></h1>
+        <p class="hero__subtitulo">Brigadeiros, bolos e tortas artesanais entregues na sua porta.</p>
+        <div class="hero__acoes">
+          <button type="button" class="btn btn--rosa" data-action="ancora-catalogo">Ver catálogo</button>
+          <a href="https://wa.me/5551997108044" target="_blank" rel="noopener" class="btn btn--creme">
+            <i class="ph ph-whatsapp-logo"></i> Falar com a Maria
+          </a>
+        </div>
+      </div>
+
+      <div class="secao__inner">
+        <div class="filtros" role="group" aria-label="Filtrar por categoria" data-container="filtros"></div>
+        <div class="grade-produtos" role="list" aria-live="polite" data-container="grade-produtos">
+          <div class="estado-carregando">
+            <i class="ph ph-spinner-gap ph-spin"></i>
+            <p>Preparando as delícias da Maria...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="secao-editor" class="secao" role="tabpanel" aria-labelledby="tab-editor" hidden>
+      <div class="secao__inner">
+        <div class="editor__header">
+          <h2 class="editor__titulo">Gerenciar Doces</h2>
+          <div class="editor__acoes-header">
+            <button type="button" class="btn btn--rosa" data-action="novo-doce">
+              <i class="ph ph-plus"></i> Novo doce
+            </button>
+            <button type="button" class="btn btn--creme" data-action="exportar-json">
+              <i class="ph ph-download-simple"></i> Exportar JSON
+            </button>
+          </div>
+        </div>
+        <div class="editor__form-wrapper" data-container="editor-form" hidden></div>
+        <div data-container="editor-tabela"></div>
+      </div>
+    </section>
+
+    <section id="secao-dashboard" class="secao" role="tabpanel" aria-labelledby="tab-dashboard" hidden>
+      <div class="secao__inner">
+        <h2 class="editor__titulo u-mt-1">Visão Geral</h2>
+        <div class="dashboard__grid" data-container="dashboard-metricas"></div>
+        <div class="dashboard__grafico-wrapper">
+          <canvas id="grafico-categorias" role="img" aria-label="Gráfico de distribuição de doces por categoria"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="secao-contato" class="secao" role="tabpanel" aria-labelledby="tab-contato" hidden>
+      <div class="secao__inner">
+        <div class="contato__grid">
+          <div class="contato__info">
+            <h2>Entre em contato</h2>
+            <p>A Dona Maria está sempre feliz em receber novos pedidos! Entre em contato pelo WhatsApp para combinar seu pedido personalizado.</p>
+            <p>Atendimento de segunda a sábado, das 8h às 18h.</p>
+            <p><i class="ph ph-map-pin"></i> Rio Grande do Sul, Brasil</p>
+          </div>
+          <div class="contato__card-whatsapp">
+            <h3>Faça seu pedido agora</h3>
+            <p>Clique abaixo para conversar diretamente com a Dona Maria pelo WhatsApp.</p>
+            <a href="https://wa.me/5551997108044" target="_blank" rel="noopener" class="btn btn--whatsapp btn">
+              <i class="ph ph-whatsapp-logo"></i> Chamar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p>&copy; 2026 Doces da Maria. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <aside id="carrinho-lateral" class="carrinho-lateral" aria-label="Carrinho de compras" hidden>
+    <div class="carrinho-lateral__header">
+      <h2 class="carrinho-lateral__titulo">Meu Carrinho</h2>
+      <button type="button" class="btn-fechar-carrinho" aria-label="Fechar carrinho" data-action="fechar-carrinho">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+
+    <div class="carrinho-lateral__conteudo" data-container="carrinho-itens"></div>
+
+    <div class="carrinho-lateral__rodape">
+      <div class="carrinho__total-linha">
+        <span>Total</span>
+        <span class="carrinho__total-valor" data-container="carrinho-total">R$ 0,00</span>
+      </div>
+      <div class="carrinho__acoes">
+        <button type="button" class="btn btn--rosa btn--checkout" data-action="gerar-nf">
+          <i class="ph ph-receipt"></i> Gerar nota fiscal
+        </button>
+        <button type="button" class="btn btn--whatsapp" data-action="pedir-whatsapp-carrinho">
+          <i class="ph ph-whatsapp-logo"></i> Pedir pelo WhatsApp
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div id="modal-nf" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-nf" hidden>
+    <div class="modal__caixa">
+      <button type="button" class="modal__fechar btn" aria-label="Fechar nota fiscal" data-action="fechar-modal-nf">
+        <i class="ph ph-x"></i>
+      </button>
+      <div data-container="modal-nf-conteudo" id="titulo-nf"></div>
+    </div>
+  </div>
+
+  <div id="modal-login" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-login" hidden>
+    <div class="modal__caixa modal__caixa--login">
+      <button type="button" class="modal__fechar btn" aria-label="Fechar login" data-action="fechar-login">
+        <i class="ph ph-x"></i>
+      </button>
+      <h2 id="titulo-login" class="editor__titulo editor__titulo--centralizado">Acesso Restrito</h2>
+      <form id="form-login" class="editor__form editor__form--coluna">
+        <div class="form-grupo">
+          <label class="form-label" for="login-user">Usuário</label>
+          <input id="login-user" class="form-input" type="text" name="usuario" required autocomplete="username" />
+        </div>
+        <div class="form-grupo">
+          <label class="form-label" for="login-senha">Senha</label>
+          <input id="login-senha" class="form-input" type="password" name="senha" required autocomplete="current-password" />
+        </div>
+        <p id="login-erro" class="mensagem-erro" aria-live="assertive" hidden>Credenciais inválidas!</p>
+        <div class="editor__form-acoes u-mt-1">
+          <button type="submit" class="btn btn--rosa btn--bloco">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    window.onload = function() {
+      if (!window.Chart) {
+        console.warn("CDN falhou. Alternando para script local hipotético.");
+        // document.write('<script defer src="./assets/js/chart.min.js"><\/script>');
+      }
+    };
+  </script>
+  
+  <script type="module" src="./app.js"></script>
+  
+</body>
+</html>
