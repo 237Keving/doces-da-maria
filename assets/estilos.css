@@ -699,7 +699,7 @@ body.tema-escuro .hero { background: linear-gradient(135deg, #1f1a18 0%, #291b20
 }
 
 @media (max-width: 420px) {
-  .header__logo span { display: none; } /* Esconde o "da Maria" se ficar muito apertado */
+  .header__logo { font-size: 1.1rem; }
   .grade-produtos { 
     grid-template-columns: 1fr; 
     gap: 1.25rem;
